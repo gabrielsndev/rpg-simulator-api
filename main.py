@@ -12,7 +12,7 @@ def roll_multiple_dice(expressao: str):
     values = expressao.split('d')
     
     if len(values) < 2:
-        return {'error': 'Input inválido, utilize o modelo {quantidade}d{lado}.'}
+        return {'error': 'Input  inválido, utilize o modelo {quantidade}d{lado}.'}
     
     quantidade = int(values[0])
     lado = int(values[1])
