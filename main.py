@@ -62,6 +62,5 @@ def roll_dice(dado: str):
     elif decrescimo:
         total -= decrescimo
         
-        
     return total
 
