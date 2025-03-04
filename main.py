@@ -1,11 +1,25 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
+from pydantic import BaseModel
 import random
+import json
+import os
+
 
 app = FastAPI()
 
+personagens = "personagens.json"
+
+class Personagem(BaseModel):
+    nome: str
+    classe: str
+    raca: str
+    vida: int
+    nivel: int
+
+
 @app.get('/')
 def read_root():
-    return {'message': 'Bem-vindo ao RPG Simulator API!'}
+    return {'mensagem': 'Bem-vindo ao RPG Simulator API!'}
   
 
 @app.get('/roll/{dado}')
@@ -64,3 +78,29 @@ def roll_dice(dado: str):
         
     return total
 
+
+def carregar_personagens():
+    if os.path.exists(personagens):
+        with open(personagens, 'r') as file:
+            return json.load(file)
+    else:
+        return []
+    
+def salvar_personagens(personagens):
+    with open('personagens.json', 'w') as file:
+        json.dump(personagens, file, indent=4)
+
+
+@app.post('/personagem/')
+def criar_personagem(personagem: Personagem):
+    personagens = carregar_personagens()
+    personagens.append(personagem.model_dump())
+    salvar_personagens(personagens)
+    
+    return {'mensagem': 'Personagem criado com sucesso!', 'personagem': personagem}
+
+
+@app.get('/personagem/')
+def listar_personagens():
+    personagens = carregar_personagens()
+    return personagens

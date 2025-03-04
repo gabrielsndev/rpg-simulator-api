@@ -1,0 +1,16 @@
+[
+    {
+        "nome": "Thirion",
+        "classe": "Guerreiro",
+        "raca": "Draw",
+        "vida": 42,
+        "nivel": 4
+    },
+    {
+        "nome": "Thorin",
+        "classe": "Barb\u00e1ro",
+        "raca": "An\u00e3o",
+        "vida": 69,
+        "nivel": 7
+    }
+]
