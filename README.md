@@ -5,8 +5,6 @@ Uma **API REST desenvolvida com FastAPI** para auxiliar em jogos de RPG de mesa,
 ## ⚡ Tecnologias Utilizadas
 - **Python** 3.x
 - **FastAPI** (Framework Web)
-- **SQLite** (Banco de Dados)
-- **Pydantic** (Validação de dados)
 - **Uvicorn** (Servidor ASGI)
 
 ## 🔧 Funcionalidades
